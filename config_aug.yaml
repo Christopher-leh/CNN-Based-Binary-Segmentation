@@ -1,0 +1,27 @@
+# config_aug.yaml
+paths:
+  images: "./data/images/"
+  masks: "./data/masks/"
+  save_model: "./models/aug_unet.pth"
+  plot_loss: "./report/figures/loss_curve2.png" 
+  plot_output: "./report/figures/output2.png"
+
+model:
+  feature_channels: 32
+  depth: 4            
+  init_weights: true   # initialize weights with Kaiming Normal
+
+augmentation:
+  enabled: true        # activates DualRotation, Flip, Jitter
+
+training:
+  run_training: false  #  set to true to run training
+  batch_size: 8
+  test_batch_size: 1   
+  learning_rate: 0.001
+  epochs: 100         
+  patience: 5           # lr scheduler patience (ReduceLROnPlateau)
+  save_best_val: true   # save best model based on validation loss
+
+reporting:
+  plot_title: "Augmented U-Net"
